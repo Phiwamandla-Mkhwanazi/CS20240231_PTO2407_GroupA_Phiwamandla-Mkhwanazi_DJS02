@@ -28,6 +28,11 @@ form.addEventListener("submit", (event) =>
   }
 
   //Scenario: An invalid division should log an error in the console.
+  if (Number(divider) === 0) {
+    console.error("Division not performed. Invalid number provided. Try again");
+    result.innerText = "Division not performed. Invalid number provided. Try again";
+    return;
+  }
 
   //Scenario: Dividing numbers result in a whole number.
   result.innerText = dividend / divider;  
