@@ -4,26 +4,32 @@ const form = document.querySelector("[data-form]");
 const result = document.querySelector("[data-result]");
 
 form.addEventListener("submit", (event) => 
+{
+  event.preventDefault();
+
+  try
   {
-    event.preventDefault();
+  
+  //Get input values.
+  const entries = new FormData(event.target);
+  const { dividend, divider } = Object.fromEntries(entries);
 
-    //Get input values.
-    const entries = new FormData(event.target);
-    const { dividend, divider } = Object.fromEntries(entries);
+  //Scenario: Validation when values are missing.
 
-   //Scenario: Dividing numbers result in a whole number.
-    result.innerText = dividend / divider;  
-    
-   //Scenario: Dividing numbers result in a decimal number.
+  //Scenario: Providing anything that is not a number should crash the program.
 
+  //Scenario: An invalid division should log an error in the console.
 
-   //Scenario: Validation when values are missing.
+  //Scenario: Dividing numbers result in a whole number.
+  result.innerText = dividend / divider;  
+      
+  
+  //Scenario: Dividing numbers result in a decimal number.
+  
+  }
+  catch(error)
+  {
+    console.error("Error Message: " + error);
+  }
 
-
-   //Scenario: An invalid division should log an error in the console.
-
-
-   //Scenario: Providing anything that is not a number should crash the program.
-
-
-  });
+});
